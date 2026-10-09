@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,7 +27,6 @@
 
         </div>
 
-
         <nav>
             <a href="#write">Write</a>
             <a href="#read">Read</a>
@@ -35,9 +35,7 @@
 
     </header>
 
-
     <main>
-
 
         <!-- HERO -->
 
@@ -47,25 +45,21 @@
                 A quiet place for honest thoughts.
             </p>
 
-
             <h1>
                 Some things are<br>
                 easier to <span>write</span> than to say.
             </h1>
-
 
             <p class="description">
                 A small anonymous space to put into words
                 the things you never found the right moment to say.
             </p>
 
-
             <div class="hero-buttons">
 
                 <button onclick="showWrite()">
                     Write something
                 </button>
-
 
                 <button class="secondary" onclick="showRead()">
                     Read something
@@ -75,8 +69,6 @@
 
         </section>
 
-
-
         <!-- WHY UNSAID -->
 
         <section class="why">
@@ -85,12 +77,10 @@
                 WHY UNSAID?
             </p>
 
-
             <h2>
                 Sometimes you don't need advice.
                 You just need somewhere to put the feeling.
             </h2>
-
 
             <p>
                 Write anonymously. Read someone else's experience.
@@ -98,8 +88,6 @@
             </p>
 
         </section>
-
-
 
         <!-- WRITE -->
 
@@ -109,23 +97,27 @@
                 What couldn't you say?
             </h2>
 
-
             <textarea
                 id="thought"
                 placeholder="You can write it here..."
+                maxlength="1000"
+                aria-label="Write your thought anonymously"
+                spellcheck="true"
             ></textarea>
 
+            <p class="writing-note">
+                Please keep your thought under 1,000 characters.
+                Don't include names, addresses, phone numbers, or other
+                details that could identify you or someone else.
+            </p>
 
             <button onclick="publishThought()">
                 Share anonymously
             </button>
 
-
-            <p id="confirmation"></p>
+            <p id="confirmation" role="status" aria-live="polite"></p>
 
         </section>
-
-
 
         <!-- READ -->
 
@@ -135,13 +127,10 @@
                 SOMEONE ELSE'S WORDS
             </p>
 
-
             <div id="posts">
             </div>
 
         </section>
-
-
 
         <!-- TALK -->
 
@@ -151,13 +140,11 @@
                 Want to talk it through?
             </h2>
 
-
             <p>
                 Sometimes writing is the first step.
                 Later, we'll add a space where you can
                 reflect on what you wrote.
             </p>
-
 
             <button onclick="alert('Coming soon.')">
                 Talk it through
@@ -165,10 +152,7 @@
 
         </section>
 
-
     </main>
-
-
 
     <!-- FOOTER -->
 
@@ -180,10 +164,9 @@
 
     </footer>
 
-
-
     <script src="script.js"></script>
 
 </body>
 
 </html>
+```
