@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Unsaid</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+
+        <div class="logo-area">
+
+            <div class="logo">
+                unsaid.
+            </div>
+
+            <div class="logo-message">
+                leave your heaviest thoughts here
+            </div>
+
+        </div>
+
+
+        <nav>
+            <a href="#write">Write</a>
+            <a href="#read">Read</a>
+            <a href="#talk">Talk</a>
+        </nav>
+
+    </header>
+
+
+    <main>
+
+
+        <!-- HERO -->
+
+        <section class="hero">
+
+            <p class="eyebrow">
+                A quiet place for honest thoughts.
+            </p>
+
+
+            <h1>
+                Some things are<br>
+                easier to <span>write</span> than to say.
+            </h1>
+
+
+            <p class="description">
+                A small anonymous space to put into words
+                the things you never found the right moment to say.
+            </p>
+
+
+            <div class="hero-buttons">
+
+                <button onclick="showWrite()">
+                    Write something
+                </button>
+
+
+                <button class="secondary" onclick="showRead()">
+                    Read something
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- WHY UNSAID -->
+
+        <section class="why">
+
+            <p class="section-label">
+                WHY UNSAID?
+            </p>
+
+
+            <h2>
+                Sometimes you don't need advice.
+                You just need somewhere to put the feeling.
+            </h2>
+
+
+            <p>
+                Write anonymously. Read someone else's experience.
+                See a perspective different from your own.
+            </p>
+
+        </section>
+
+
+
+        <!-- WRITE -->
+
+        <section id="write" class="write-section">
+
+            <h2>
+                What couldn't you say?
+            </h2>
+
+
+            <textarea
+                id="thought"
+                placeholder="You can write it here..."
+            ></textarea>
+
+
+            <button onclick="publishThought()">
+                Share anonymously
+            </button>
+
+
+            <p id="confirmation"></p>
+
+        </section>
+
+
+
+        <!-- READ -->
+
+        <section id="read" class="read-section">
+
+            <p class="section-label">
+                SOMEONE ELSE'S WORDS
+            </p>
+
+
+            <div id="posts">
+            </div>
+
+        </section>
+
+
+
+        <!-- TALK -->
+
+        <section id="talk" class="talk-section">
+
+            <h2>
+                Want to talk it through?
+            </h2>
+
+
+            <p>
+                Sometimes writing is the first step.
+                Later, we'll add a space where you can
+                reflect on what you wrote.
+            </p>
+
+
+            <button onclick="alert('Coming soon.')">
+                Talk it through
+            </button>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            unsaid. — made for the things we don't say.
+        </p>
+
+    </footer>
+
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

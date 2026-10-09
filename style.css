@@ -1,0 +1,375 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f7f6f2;
+    color: #202020;
+    line-height: 1.6;
+}
+
+
+/* HEADER */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 24px 8%;
+
+    border-bottom: 1px solid #e5e3dd;
+
+    background: #f7f6f2;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+    letter-spacing: -1px;
+}
+
+nav {
+    display: flex;
+    gap: 30px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #555;
+    font-size: 15px;
+}
+
+nav a:hover {
+    color: #000;
+}
+
+
+/* HERO */
+
+.hero {
+    max-width: 900px;
+    margin: 0 auto;
+
+    padding: 120px 20px 130px;
+
+    text-align: center;
+}
+
+.eyebrow {
+    font-size: 14px;
+    color: #777;
+
+    margin-bottom: 25px;
+
+    letter-spacing: 1px;
+}
+
+.hero h1 {
+    font-size: clamp(45px, 7vw, 80px);
+
+    line-height: 1.05;
+
+    letter-spacing: -3px;
+
+    font-weight: 600;
+}
+
+.hero h1 span {
+    font-style: italic;
+    font-weight: 400;
+}
+
+.description {
+    max-width: 550px;
+
+    margin: 30px auto;
+
+    color: #666;
+
+    font-size: 18px;
+}
+
+
+/* BUTTONS */
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+
+    gap: 12px;
+
+    margin-top: 35px;
+}
+
+button {
+    border: none;
+
+    background: #202020;
+
+    color: white;
+
+    padding: 14px 22px;
+
+    border-radius: 30px;
+
+    font-size: 15px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+button:hover {
+    transform: translateY(-2px);
+
+    background: #000;
+}
+
+button.secondary {
+    background: transparent;
+
+    color: #202020;
+
+    border: 1px solid #ccc;
+}
+
+button.secondary:hover {
+    background: #eeeeeb;
+}
+
+
+/* WHY SECTION */
+
+.why {
+    max-width: 850px;
+
+    margin: 0 auto;
+
+    padding: 100px 20px;
+
+    text-align: center;
+
+    border-top: 1px solid #e5e3dd;
+}
+
+.section-label {
+    font-size: 12px;
+
+    letter-spacing: 2px;
+
+    color: #888;
+
+    margin-bottom: 20px;
+}
+
+.why h2 {
+    font-size: 38px;
+
+    line-height: 1.2;
+
+    font-weight: 500;
+
+    letter-spacing: -1px;
+}
+
+.why p:last-child {
+    margin-top: 20px;
+
+    color: #777;
+}
+
+
+/* WRITE SECTION */
+
+.write-section {
+    max-width: 750px;
+
+    margin: 0 auto;
+
+    padding: 100px 20px;
+}
+
+.write-section h2 {
+    font-size: 40px;
+
+    margin-bottom: 25px;
+
+    letter-spacing: -1px;
+}
+
+textarea {
+    width: 100%;
+
+    min-height: 220px;
+
+    resize: vertical;
+
+    padding: 20px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 16px;
+
+    background: white;
+
+    font-family: inherit;
+
+    font-size: 16px;
+
+    outline: none;
+}
+
+textarea:focus {
+    border-color: #999;
+}
+
+.write-section button {
+    margin-top: 15px;
+}
+
+#confirmation {
+    margin-top: 15px;
+
+    color: #666;
+}
+
+
+/* READ SECTION */
+
+.read-section {
+    max-width: 750px;
+
+    margin: 0 auto;
+
+    padding: 100px 20px;
+}
+
+.post {
+    background: white;
+
+    border: 1px solid #e5e3dd;
+
+    border-radius: 18px;
+
+    padding: 30px;
+
+    margin-top: 20px;
+}
+
+.post p {
+    font-size: 19px;
+
+    line-height: 1.6;
+}
+
+.post span {
+    display: block;
+
+    margin-top: 15px;
+
+    color: #888;
+
+    font-size: 14px;
+}
+
+
+/* TALK SECTION */
+
+.talk-section {
+    text-align: center;
+
+    padding: 120px 20px;
+
+    background: #ebe9e3;
+}
+
+.talk-section h2 {
+    font-size: 40px;
+
+    margin-bottom: 15px;
+}
+
+.talk-section p {
+    max-width: 500px;
+
+    margin: 0 auto 25px;
+
+    color: #666;
+}
+
+
+/* FOOTER */
+
+footer {
+    text-align: center;
+
+    padding: 40px 20px;
+
+    color: #888;
+
+    font-size: 13px;
+
+    border-top: 1px solid #ddd;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    header {
+        padding: 20px;
+    }
+
+    nav {
+        gap: 15px;
+    }
+
+    .hero {
+        padding: 90px 20px;
+    }
+
+    .hero h1 {
+        letter-spacing: -2px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+    .hero-buttons button {
+        width: 100%;
+    }
+
+    .why h2,
+    .write-section h2,
+    .talk-section h2 {
+        font-size: 30px;
+    }
+}
+.logo-area {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-message {
+    margin-top: -2px;
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: 10px;
+
+    color: #8b857a;
+
+    font-style: italic;
+
+    letter-spacing: 0.1px;
+}
