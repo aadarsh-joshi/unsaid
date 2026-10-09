@@ -1,5 +1,12 @@
 const SUPABASE_URL = "https://wybcenprxtonxnyxiayv.supabase.co";
-const SUPABASE_KEY = "sb_publishable_N9g_jvGcrPklD30eguT0Hw_vR0ZuvEM";
+const SUPABASE_KEY = "sb_publishable_N9g_jvGcrPklD30eguT0Hw_vR0ZuvEM
+
+// SUPABASE INITIALIZATION
+
+const supabaseClient = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+);
 
 const postsContainer = document.getElementById("posts");
 const thoughtBox = document.getElementById("thought");
@@ -7,28 +14,44 @@ const confirmation = document.getElementById("confirmation");
 const publishButton = document.querySelector("#write button");
 
 let isPublishing = false;
+let currentSession = null;
 
 
-// SAMPLE POSTS
+// ANONYMOUS SIGN-IN
 
-const samplePosts = [
-    {
-        text: "I laughed when everyone made the joke, but I kept thinking about it after I got home.",
-        date: "sample-1"
-    },
-    {
-        text: "Sometimes I know exactly what I want to say. I just don't know how to say it without making everything awkward.",
-        date: "sample-2"
-    },
-    {
-        text: "I always tell people I'm fine because explaining why I'm not feels harder than just saying I'm fine.",
-        date: "sample-3"
-    },
-    {
-        text: "I thought staying quiet meant I was avoiding problems. Maybe sometimes I was just avoiding the conversation.",
-        date: "sample-4"
+async function ensureAnonymousSession() {
+    const { data, error } = await supabaseClient.auth.getSession();
+
+    if (error) {
+        throw error;
     }
-];
+
+    if (data.session) {
+        currentSession = data.session;
+        return currentSession;
+    }
+
+    const { data: signInData, error: signInError } =
+        await supabaseClient.auth.signInAnonymously();
+
+    if (signInError) {
+        throw signInError;
+    }
+
+    if (!signInData.session) {
+        throw new Error("No anonymous session was created.");
+    }
+
+    currentSession = signInData.session;
+    return currentSession;
+}
+
+
+// KEEP SESSION UPDATED
+
+supabaseClient.auth.onAuthStateChange(function (_event, session) {
+    currentSession = session;
+});
 
 
 // WRITE BUTTON
@@ -95,7 +118,7 @@ async function displayPost(post) {
         </div>
     `;
 
-    // Display user-submitted text as text, never as HTML.
+    // Always display submitted text as text, never as HTML.
     article.querySelector("p").textContent =
         `"${post.content || post.text || ""}"`;
 
@@ -104,7 +127,7 @@ async function displayPost(post) {
     const button = article.querySelector(".understand-button");
     const countText = article.querySelector(".understanding-count");
 
-    // SAMPLE POSTS: counts are stored only in this browser.
+    // SAMPLE POSTS: retained for compatibility if used later.
     if (!post.id) {
         const postText = (post.content || post.text || "").trim();
         const key = `sample-understood-${postText}`;
@@ -238,9 +261,9 @@ async function loadPosts() {
 
         const onlinePosts = await response.json();
 
-        onlinePosts.forEach(function (post) {
-            displayPost(post);
-        });
+        for (const post of onlinePosts) {
+            await displayPost(post);
+        }
 
     } catch (error) {
         console.error("Connection error:", error);
@@ -251,7 +274,6 @@ async function loadPosts() {
 // SHARE ANONYMOUSLY
 
 async function publishThought() {
-    // Prevent multiple simultaneous submissions.
     if (isPublishing) return;
 
     const text = thoughtBox.value.trim();
@@ -262,7 +284,6 @@ async function publishThought() {
         return;
     }
 
-    // Client-side limit; database protection comes next.
     if (text.length > 1000) {
         confirmation.textContent =
             "Your thought is too long. Please keep it under 1,000 characters.";
@@ -271,9 +292,14 @@ async function publishThought() {
 
     isPublishing = true;
     publishButton.disabled = true;
-    confirmation.textContent = "Leaving your words here...";
+    confirmation.textContent = "Preparing your anonymous space...";
 
     try {
+        // Sign in before publishing.
+        const session = await ensureAnonymousSession();
+
+        confirmation.textContent = "Leaving your words here...";
+
         const response = await fetch(
             `${SUPABASE_URL}/rest/v1/posts`,
             {
@@ -281,11 +307,12 @@ async function publishThought() {
                 headers: {
                     "Content-Type": "application/json",
                     "apikey": SUPABASE_KEY,
-                    "Authorization": `Bearer ${SUPABASE_KEY}`,
+                    "Authorization": `Bearer ${session.access_token}`,
                     "Prefer": "return=representation"
                 },
                 body: JSON.stringify({
-                    content: text
+                    content: text,
+                    user_id: session.user.id
                 })
             }
         );
@@ -309,7 +336,7 @@ async function publishThought() {
             return;
         }
 
-        displayPost(newPost[0]);
+        await displayPost(newPost[0]);
 
         thoughtBox.value = "";
 
@@ -321,11 +348,10 @@ async function publishThought() {
         }, 3000);
 
     } catch (error) {
-        console.error("Connection error:", error);
+        console.error("Could not sign in or publish:", error);
 
         confirmation.textContent =
-            "Could not connect to Unsaid. Please try again.";
-
+            "Couldn't connect right now. Please try again.";
     } finally {
         isPublishing = false;
         publishButton.disabled = false;
@@ -335,4 +361,15 @@ async function publishThought() {
 
 // START WEBSITE
 
-loadPosts();
+async function startWebsite() {
+    try {
+        await ensureAnonymousSession();
+    } catch (error) {
+        console.error("Anonymous sign-in failed:", error);
+    }
+
+    // Public posts can still be read even if sign-in fails.
+    await loadPosts();
+}
+
+startWebsite();
