@@ -1,170 +1,376 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
 
-    <title>Unsaid</title>
+:root {
+    --paper: #f7f5ef;
+    --white: #fffefa;
+    --ink: #292b25;
+    --muted: #858579;
+    --olive: #777c63;
+    --line: #e7e4da;
+    --soft: #efeee7;
+}
 
-    <link rel="stylesheet" href="style.css">
-</head>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-<body>
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+}
 
-    <header>
+body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+}
 
-        <div class="logo-area">
+button, textarea {
+    font: inherit;
+}
 
-            <div class="logo">
-                unsaid.
-            </div>
+/* HEADER */
 
-            <div class="logo-message">
-                leave your heaviest thoughts here
-            </div>
+header {
+    width: 100%;
+    padding: 22px 8%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--line);
+    background: rgba(247, 245, 239, 0.94);
+}
 
-        </div>
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 31px;
+    font-weight: 600;
+    letter-spacing: -1.5px;
+    line-height: 1.2;
+}
 
-        <nav>
-            <a href="#write">Write</a>
-            <a href="#read">Read</a>
-            <a href="#talk">Talk</a>
-        </nav>
+.logo-message {
+    color: var(--muted);
+    font-size: 10px;
+    letter-spacing: 1.1px;
+    margin-top: 4px;
+}
 
-    </header>
+nav {
+    display: flex;
+    gap: 34px;
+}
 
-    <main>
+nav a {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 13px;
+    transition: color .25s ease;
+}
 
-        <!-- HERO -->
+nav a:hover {
+    color: var(--ink);
+}
 
-        <section class="hero">
+/* GENERAL */
 
-            <p class="eyebrow">
-                A quiet place for honest thoughts.
-            </p>
+main {
+    overflow: hidden;
+}
 
-            <h1>
-                Some things are<br>
-                easier to <span>write</span> than to say.
-            </h1>
+section {
+    width: min(100% - 48px, 850px);
+    margin: auto;
+}
 
-            <p class="description">
-                A small anonymous space to put into words
-                the things you never found the right moment to say.
-            </p>
+h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(30px, 4vw, 43px);
+    line-height: 1.3;
+    font-weight: 400;
+    letter-spacing: -1px;
+}
 
-            <div class="hero-buttons">
+section p {
+    color: var(--muted);
+}
 
-                <button onclick="showWrite()">
-                    Write something
-                </button>
+/* HERO */
 
-                <button class="secondary" onclick="showRead()">
-                    Read something
-                </button>
+.hero {
+    text-align: center;
+    padding-top: 145px;
+    padding-bottom: 145px;
+}
 
-            </div>
+.eyebrow,
+.section-label {
+    color: var(--olive);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+}
 
-        </section>
+.hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(46px, 7vw, 78px);
+    line-height: 1.14;
+    font-weight: 400;
+    letter-spacing: -2.8px;
+    margin: 27px auto;
+}
 
-        <!-- WHY UNSAID -->
+.hero h1 span {
+    color: var(--olive);
+    font-style: italic;
+}
 
-        <section class="why">
+.hero .description {
+    max-width: 470px;
+    margin: 0 auto;
+    font-size: 15px;
+    line-height: 1.9;
+}
 
-            <p class="section-label">
-                WHY UNSAID?
-            </p>
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 13px;
+    margin-top: 34px;
+}
 
-            <h2>
-                Sometimes you don't need advice.
-                You just need somewhere to put the feeling.
-            </h2>
+/* BUTTONS */
 
-            <p>
-                Write anonymously. Read someone else's experience.
-                See a perspective different from your own.
-            </p>
+button {
+    border: 1px solid var(--ink);
+    background: var(--ink);
+    color: white;
+    padding: 13px 23px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: .2px;
+    cursor: pointer;
+    transition: all .25s ease;
+}
 
-        </section>
+button:hover {
+    background: var(--olive);
+    border-color: var(--olive);
+    transform: translateY(-2px);
+}
 
-        <!-- WRITE -->
+button.secondary {
+    background: transparent;
+    color: var(--ink);
+    border-color: var(--line);
+}
 
-        <section id="write" class="write-section">
+button.secondary:hover {
+    background: var(--soft);
+    border-color: var(--olive);
+}
 
-            <h2>
-                What couldn't you say?
-            </h2>
+/* WHY UNSAID */
 
-            <textarea
-                id="thought"
-                placeholder="You can write it here..."
-                maxlength="1000"
-                aria-label="Write your thought anonymously"
-                spellcheck="true"
-            ></textarea>
+.why {
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding-top: 95px;
+    padding-bottom: 95px;
+    text-align: center;
+}
 
-            <p class="writing-note">
-                Please keep your thought under 1,000 characters.
-                Don't include names, addresses, phone numbers, or other
-                details that could identify you or someone else.
-            </p>
+.why h2 {
+    max-width: 690px;
+    margin: 23px auto;
+}
 
-            <button onclick="publishThought()">
-                Share anonymously
-            </button>
+.why > p:last-child {
+    max-width: 490px;
+    margin: auto;
+    font-size: 14px;
+}
 
-            <p id="confirmation" role="status" aria-live="polite"></p>
+/* WRITE */
 
-        </section>
+.write-section {
+    padding-top: 115px;
+    padding-bottom: 115px;
+    text-align: center;
+}
 
-        <!-- READ -->
+.write-section h2 {
+    margin-bottom: 35px;
+}
 
-        <section id="read" class="read-section">
+textarea {
+    width: 100%;
+    min-height: 210px;
+    padding: 24px;
+    resize: vertical;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    outline: none;
+    background: var(--white);
+    color: var(--ink);
+    font-size: 14px;
+    line-height: 1.8;
+    transition: border-color .25s ease, box-shadow .25s ease;
+}
 
-            <p class="section-label">
-                SOMEONE ELSE'S WORDS
-            </p>
+textarea::placeholder {
+    color: #aaa99e;
+}
 
-            <div id="posts">
-            </div>
+textarea:focus {
+    border-color: var(--olive);
+    box-shadow: 0 0 0 3px rgba(119, 124, 99, .08);
+}
 
-        </section>
+.writing-note {
+    text-align: left;
+    font-size: 11px;
+    line-height: 1.7;
+    margin: 12px 0 23px;
+}
 
-        <!-- TALK -->
+#confirmation {
+    margin-top: 15px;
+    font-size: 13px;
+}
 
-        <section id="talk" class="talk-section">
+/* READ */
 
-            <h2>
-                Want to talk it through?
-            </h2>
+.read-section {
+    border-top: 1px solid var(--line);
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
 
-            <p>
-                Sometimes writing is the first step.
-                Later, we'll add a space where you can
-                reflect on what you wrote.
-            </p>
+.read-section .section-label {
+    margin-bottom: 32px;
+}
 
-            <button onclick="alert('Coming soon.')">
-                Talk it through
-            </button>
+#posts {
+    display: grid;
+    gap: 17px;
+}
 
-        </section>
+article {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 28px;
+    transition: border-color .25s ease, transform .25s ease;
+}
 
-    </main>
+article:hover {
+    border-color: #cbc9bc;
+    transform: translateY(-2px);
+}
 
-    <!-- FOOTER -->
+article p {
+    color: var(--ink);
+    font-size: 14px;
+    line-height: 1.9;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
 
-    <footer>
+article button {
+    margin-top: 18px;
+}
 
-        <p>
-            unsaid. — made for the things we don't say.
-        </p>
+/* TALK */
 
-    </footer>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="script.js"></script>
+.talk-section {
+    border-top: 1px solid var(--line);
+    padding-top: 100px;
+    padding-bottom: 110px;
+    text-align: center;
+}
 
-</body>
+.talk-section p {
+    max-width: 470px;
+    margin: 18px auto 27px;
+    font-size: 14px;
+}
 
-</html>
+/* FOOTER */
+
+footer {
+    border-top: 1px solid var(--line);
+    padding: 30px 20px;
+    text-align: center;
+}
+
+footer p {
+    color: var(--muted);
+    font-size: 11px;
+    letter-spacing: .4px;
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+    header {
+        padding: 17px 6%;
+    }
+
+    .logo {
+        font-size: 27px;
+    }
+
+    .logo-message {
+        font-size: 9px;
+    }
+
+    nav {
+        gap: 15px;
+    }
+
+    nav a {
+        font-size: 11px;
+    }
+
+    .hero {
+        padding-top: 105px;
+        padding-bottom: 105px;
+    }
+
+    .hero h1 {
+        letter-spacing: -1.8px;
+    }
+
+    .hero .description {
+        font-size: 14px;
+    }
+
+    .hero-buttons {
+        flex-wrap: wrap;
+    }
+
+    .why,
+    .write-section,
+    .read-section,
+    .talk-section {
+        padding-top: 75px;
+        padding-bottom: 75px;
+    }
+
+    article {
+        padding: 21px;
+    }
+
+    textarea {
+        min-height: 180px;
+        padding: 18px;
+    }
+}
