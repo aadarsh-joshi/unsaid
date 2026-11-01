@@ -1,168 +1,285 @@
 
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
 
 :root {
-    --background: #f8f7f3;
-    --surface: #ffffff;
-    --text: #242521;
-    --muted: #85857d;
-    --accent: #777d66;
-    --border: #e9e7df;
-    --soft: #f0efe9;
+    --paper: #f7f5ef;
+    --white: #fffefa;
+    --ink: #292b25;
+    --muted: #858579;
+    --olive: #777c63;
+    --line: #e7e4da;
+    --soft: #efeee7;
 }
 
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 100px;
 }
 
 body {
-    background: var(--background);
-    color: var(--text);
+    background: var(--paper);
+    color: var(--ink);
     font-family: 'DM Sans', sans-serif;
-    line-height: 1.7;
+    line-height: 1.75;
     -webkit-font-smoothing: antialiased;
 }
 
-a {
-    color: inherit;
-    text-decoration: none;
-}
-
-button {
+button, textarea {
     font: inherit;
-    cursor: pointer;
 }
 
-nav {
-    width: min(1100px, 88%);
-    margin: auto;
-    min-height: 88px;
+/* HEADER */
+
+header {
+    width: 100%;
+    padding: 22px 8%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid var(--line);
+    background: rgba(247, 245, 239, 0.94);
 }
 
 .logo {
     font-family: 'Playfair Display', serif;
-    font-size: 29px;
-    letter-spacing: -1px;
+    font-size: 31px;
     font-weight: 600;
+    letter-spacing: -1.5px;
+    line-height: 1.2;
+}
+
+.logo-message {
+    color: var(--muted);
+    font-size: 10px;
+    letter-spacing: 1.1px;
+    margin-top: 4px;
+}
+
+nav {
+    display: flex;
+    gap: 34px;
 }
 
 nav a {
+    text-decoration: none;
     color: var(--muted);
     font-size: 13px;
-    margin-left: 30px;
-    transition: color .2s ease;
+    transition: color .25s ease;
 }
 
 nav a:hover {
-    color: var(--text);
+    color: var(--ink);
+}
+
+/* GENERAL */
+
+main {
+    overflow: hidden;
 }
 
 section {
-    width: min(850px, 88%);
+    width: min(100% - 48px, 850px);
     margin: auto;
-    padding: 105px 0;
-}
-
-.hero {
-    text-align: center;
-    padding-top: 145px;
-    padding-bottom: 130px;
-}
-
-.hero h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(43px, 7vw, 76px);
-    line-height: 1.13;
-    letter-spacing: -2px;
-    font-weight: 400;
-    max-width: 750px;
-    margin: 0 auto 25px;
-}
-
-.hero p {
-    max-width: 480px;
-    margin: auto;
-    color: var(--muted);
-    font-size: 16px;
 }
 
 h2 {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(32px, 5vw, 45px);
+    font-size: clamp(30px, 4vw, 43px);
+    line-height: 1.3;
     font-weight: 400;
     letter-spacing: -1px;
-    margin-bottom: 18px;
 }
 
-p {
+section p {
     color: var(--muted);
 }
 
-button,
-.btn {
-    border: none;
-    border-radius: 4px;
-    background: var(--text);
+/* HERO */
+
+.hero {
+    text-align: center;
+    padding-top: 145px;
+    padding-bottom: 145px;
+}
+
+.eyebrow,
+.section-label {
+    color: var(--olive);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+}
+
+.hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(46px, 7vw, 78px);
+    line-height: 1.14;
+    font-weight: 400;
+    letter-spacing: -2.8px;
+    margin: 27px auto;
+}
+
+.hero h1 span {
+    color: var(--olive);
+    font-style: italic;
+}
+
+.hero .description {
+    max-width: 470px;
+    margin: 0 auto;
+    font-size: 15px;
+    line-height: 1.9;
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 13px;
+    margin-top: 34px;
+}
+
+/* BUTTONS */
+
+button {
+    border: 1px solid var(--ink);
+    background: var(--ink);
     color: white;
     padding: 13px 23px;
-    font-size: 13px;
-    transition: background .2s ease, transform .2s ease;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: .2px;
+    cursor: pointer;
+    transition: all .25s ease;
 }
 
-button:hover,
-.btn:hover {
-    background: var(--accent);
-    transform: translateY(-1px);
+button:hover {
+    background: var(--olive);
+    border-color: var(--olive);
+    transform: translateY(-2px);
 }
 
-input,
+button.secondary {
+    background: transparent;
+    color: var(--ink);
+    border-color: var(--line);
+}
+
+button.secondary:hover {
+    background: var(--soft);
+    border-color: var(--olive);
+}
+
+/* WHY UNSAID */
+
+.why {
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding-top: 95px;
+    padding-bottom: 95px;
+    text-align: center;
+}
+
+.why h2 {
+    max-width: 690px;
+    margin: 23px auto;
+}
+
+.why > p:last-child {
+    max-width: 490px;
+    margin: auto;
+    font-size: 14px;
+}
+
+/* WRITE */
+
+.write-section {
+    padding-top: 115px;
+    padding-bottom: 115px;
+    text-align: center;
+}
+
+.write-section h2 {
+    margin-bottom: 35px;
+}
+
 textarea {
     width: 100%;
-    border: 1px solid var(--border);
-    border-radius: 5px;
-    padding: 17px;
-    background: var(--surface);
-    color: var(--text);
-    font: inherit;
-    outline: none;
-    transition: border-color .2s ease;
-}
-
-input:focus,
-textarea:focus {
-    border-color: var(--accent);
-}
-
-textarea {
-    min-height: 190px;
+    min-height: 210px;
+    padding: 24px;
     resize: vertical;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    outline: none;
+    background: var(--white);
+    color: var(--ink);
+    font-size: 14px;
+    line-height: 1.8;
+    transition: border-color .25s ease, box-shadow .25s ease;
+}
+
+textarea::placeholder {
+    color: #aaa99e;
+}
+
+textarea:focus {
+    border-color: var(--olive);
+    box-shadow: 0 0 0 3px rgba(119, 124, 99, .08);
+}
+
+.writing-note {
+    text-align: left;
+    font-size: 11px;
+    line-height: 1.7;
+    margin: 12px 0 23px;
+}
+
+#confirmation {
+    margin-top: 15px;
+    font-size: 13px;
+}
+
+/* READ */
+
+.read-section {
+    border-top: 1px solid var(--line);
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+.read-section .section-label {
+    margin-bottom: 32px;
+}
+
+#posts {
+    display: grid;
+    gap: 17px;
 }
 
 article {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 7px;
-    padding: 27px;
-    margin: 18px 0;
-    transition: border-color .2s ease;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 28px;
+    transition: border-color .25s ease, transform .25s ease;
 }
 
 article:hover {
-    border-color: #cfcec4;
+    border-color: #cbc9bc;
+    transform: translateY(-2px);
 }
 
 article p {
-    color: var(--text);
+    color: var(--ink);
+    font-size: 14px;
+    line-height: 1.9;
     white-space: pre-wrap;
     overflow-wrap: anywhere;
 }
@@ -171,38 +288,89 @@ article button {
     margin-top: 18px;
 }
 
-footer {
-    border-top: 1px solid var(--border);
-    padding: 35px 6%;
+/* TALK */
+
+.talk-section {
+    border-top: 1px solid var(--line);
+    padding-top: 100px;
+    padding-bottom: 110px;
     text-align: center;
-    color: var(--muted);
-    font-size: 12px;
 }
 
-@media (max-width: 600px) {
-    nav {
-        min-height: 72px;
-    }
+.talk-section p {
+    max-width: 470px;
+    margin: 18px auto 27px;
+    font-size: 14px;
+}
 
-    nav a {
-        margin-left: 12px;
-        font-size: 12px;
+/* FOOTER */
+
+footer {
+    border-top: 1px solid var(--line);
+    padding: 30px 20px;
+    text-align: center;
+}
+
+footer p {
+    color: var(--muted);
+    font-size: 11px;
+    letter-spacing: .4px;
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+    header {
+        padding: 17px 6%;
     }
 
     .logo {
-        font-size: 25px;
+        font-size: 27px;
     }
 
-    section {
-        padding: 75px 0;
+    .logo-message {
+        font-size: 9px;
+    }
+
+    nav {
+        gap: 15px;
+    }
+
+    nav a {
+        font-size: 11px;
     }
 
     .hero {
         padding-top: 105px;
-        padding-bottom: 90px;
+        padding-bottom: 105px;
+    }
+
+    .hero h1 {
+        letter-spacing: -1.8px;
+    }
+
+    .hero .description {
+        font-size: 14px;
+    }
+
+    .hero-buttons {
+        flex-wrap: wrap;
+    }
+
+    .why,
+    .write-section,
+    .read-section,
+    .talk-section {
+        padding-top: 75px;
+        padding-bottom: 75px;
     }
 
     article {
-        padding: 20px;
+        padding: 21px;
+    }
+
+    textarea {
+        min-height: 180px;
+        padding: 18px;
     }
 }
