@@ -374,3 +374,155 @@ footer p {
         padding: 18px;
     }
 }
+
+/* =================================
+   UNSAID — REFINED DESIGN
+================================= */
+
+/* More elegant homepage */
+
+.hero {
+    position: relative;
+    isolation: isolate;
+    padding-top: 155px;
+    padding-bottom: 155px;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    width: 230px;
+    height: 230px;
+    border: 1px solid rgba(119, 124, 99, 0.13);
+    border-radius: 50%;
+    top: 55px;
+    right: -100px;
+    pointer-events: none;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    width: 110px;
+    height: 110px;
+    border: 1px solid rgba(119, 124, 99, 0.13);
+    border-radius: 50%;
+    top: 115px;
+    right: -40px;
+    pointer-events: none;
+}
+
+.hero h1 {
+    max-width: 790px;
+    font-size: clamp(48px, 7.5vw, 84px);
+    letter-spacing: -3px;
+    line-height: 1.12;
+}
+
+.hero .description {
+    max-width: 440px;
+    line-height: 2;
+}
+
+/* More refined buttons */
+
+button {
+    border-radius: 30px;
+    padding: 14px 27px;
+    font-size: 12px;
+    letter-spacing: .3px;
+}
+
+button:hover {
+    transform: translateY(-2px);
+}
+
+/* Better writing experience */
+
+.write-section {
+    max-width: 780px;
+}
+
+textarea {
+    border-radius: 9px;
+    padding: 27px;
+    min-height: 220px;
+}
+
+/* More beautiful reading section */
+
+.read-section {
+    max-width: 760px;
+}
+
+#posts {
+    gap: 20px;
+}
+
+article {
+    position: relative;
+    padding: 32px;
+    border-radius: 9px;
+    border: 1px solid var(--line);
+    box-shadow: 0 4px 18px rgba(40, 40, 30, 0.025);
+    transition: transform .25s ease,
+                box-shadow .25s ease,
+                border-color .25s ease;
+}
+
+article:hover {
+    transform: translateY(-3px);
+    border-color: #d5d3c6;
+    box-shadow: 0 10px 28px rgba(40, 40, 30, 0.055);
+}
+
+article p {
+    font-size: 14px;
+    line-height: 2;
+    letter-spacing: .05px;
+}
+
+article button {
+    background: transparent;
+    color: var(--olive);
+    border: 1px solid var(--line);
+    padding: 9px 17px;
+    font-size: 11px;
+}
+
+article button:hover {
+    background: var(--olive);
+    color: white;
+    border-color: var(--olive);
+}
+
+/* Mobile refinement */
+
+@media (max-width: 600px) {
+    .hero {
+        padding-top: 110px;
+        padding-bottom: 110px;
+    }
+
+    .hero h1 {
+        letter-spacing: -1.8px;
+    }
+
+    .hero::before {
+        right: -170px;
+    }
+
+    .hero::after {
+        right: -110px;
+    }
+
+    article {
+        padding: 23px;
+    }
+
+    textarea {
+        padding: 20px;
+    }
+}
