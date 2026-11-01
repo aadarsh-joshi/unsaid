@@ -1,376 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
 
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
-
-:root {
-    --paper: #f7f5ef;
-    --white: #fffefa;
-    --ink: #292b25;
-    --muted: #858579;
-    --olive: #777c63;
-    --line: #e7e4da;
-    --soft: #efeee7;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 100px;
-}
-
-body {
-    background: var(--paper);
-    color: var(--ink);
-    font-family: 'DM Sans', sans-serif;
-    line-height: 1.75;
-    -webkit-font-smoothing: antialiased;
-}
-
-button, textarea {
-    font: inherit;
-}
-
-/* HEADER */
-
-header {
-    width: 100%;
-    padding: 22px 8%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 1px solid var(--line);
-    background: rgba(247, 245, 239, 0.94);
-}
-
-.logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 31px;
-    font-weight: 600;
-    letter-spacing: -1.5px;
-    line-height: 1.2;
-}
-
-.logo-message {
-    color: var(--muted);
-    font-size: 10px;
-    letter-spacing: 1.1px;
-    margin-top: 4px;
-}
-
-nav {
-    display: flex;
-    gap: 34px;
-}
-
-nav a {
-    text-decoration: none;
-    color: var(--muted);
-    font-size: 13px;
-    transition: color .25s ease;
-}
-
-nav a:hover {
-    color: var(--ink);
-}
-
-/* GENERAL */
-
-main {
-    overflow: hidden;
-}
-
-section {
-    width: min(100% - 48px, 850px);
-    margin: auto;
-}
-
-h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(30px, 4vw, 43px);
-    line-height: 1.3;
-    font-weight: 400;
-    letter-spacing: -1px;
-}
-
-section p {
-    color: var(--muted);
-}
-
-/* HERO */
-
-.hero {
-    text-align: center;
-    padding-top: 145px;
-    padding-bottom: 145px;
-}
-
-.eyebrow,
-.section-label {
-    color: var(--olive);
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-}
-
-.hero h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(46px, 7vw, 78px);
-    line-height: 1.14;
-    font-weight: 400;
-    letter-spacing: -2.8px;
-    margin: 27px auto;
-}
-
-.hero h1 span {
-    color: var(--olive);
-    font-style: italic;
-}
-
-.hero .description {
-    max-width: 470px;
-    margin: 0 auto;
-    font-size: 15px;
-    line-height: 1.9;
-}
-
-.hero-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 13px;
-    margin-top: 34px;
-}
-
-/* BUTTONS */
-
-button {
-    border: 1px solid var(--ink);
-    background: var(--ink);
-    color: white;
-    padding: 13px 23px;
-    border-radius: 3px;
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: .2px;
-    cursor: pointer;
-    transition: all .25s ease;
-}
-
-button:hover {
-    background: var(--olive);
-    border-color: var(--olive);
-    transform: translateY(-2px);
-}
-
-button.secondary {
-    background: transparent;
-    color: var(--ink);
-    border-color: var(--line);
-}
-
-button.secondary:hover {
-    background: var(--soft);
-    border-color: var(--olive);
-}
-
-/* WHY UNSAID */
-
-.why {
-    border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
-    padding-top: 95px;
-    padding-bottom: 95px;
-    text-align: center;
-}
-
-.why h2 {
-    max-width: 690px;
-    margin: 23px auto;
-}
-
-.why > p:last-child {
-    max-width: 490px;
-    margin: auto;
-    font-size: 14px;
-}
-
-/* WRITE */
-
-.write-section {
-    padding-top: 115px;
-    padding-bottom: 115px;
-    text-align: center;
-}
-
-.write-section h2 {
-    margin-bottom: 35px;
-}
-
-textarea {
-    width: 100%;
-    min-height: 210px;
-    padding: 24px;
-    resize: vertical;
-    border: 1px solid var(--line);
-    border-radius: 4px;
-    outline: none;
-    background: var(--white);
-    color: var(--ink);
-    font-size: 14px;
-    line-height: 1.8;
-    transition: border-color .25s ease, box-shadow .25s ease;
-}
-
-textarea::placeholder {
-    color: #aaa99e;
-}
-
-textarea:focus {
-    border-color: var(--olive);
-    box-shadow: 0 0 0 3px rgba(119, 124, 99, .08);
-}
-
-.writing-note {
-    text-align: left;
-    font-size: 11px;
-    line-height: 1.7;
-    margin: 12px 0 23px;
-}
-
-#confirmation {
-    margin-top: 15px;
-    font-size: 13px;
-}
-
-/* READ */
-
-.read-section {
-    border-top: 1px solid var(--line);
-    padding-top: 100px;
-    padding-bottom: 100px;
-}
-
-.read-section .section-label {
-    margin-bottom: 32px;
-}
-
-#posts {
-    display: grid;
-    gap: 17px;
-}
-
-article {
-    background: var(--white);
-    border: 1px solid var(--line);
-    border-radius: 4px;
-    padding: 28px;
-    transition: border-color .25s ease, transform .25s ease;
-}
-
-article:hover {
-    border-color: #cbc9bc;
-    transform: translateY(-2px);
-}
-
-article p {
-    color: var(--ink);
-    font-size: 14px;
-    line-height: 1.9;
-    white-space: pre-wrap;
-    overflow-wrap: anywhere;
-}
-
-article button {
-    margin-top: 18px;
-}
-
-/* TALK */
-
-.talk-section {
-    border-top: 1px solid var(--line);
-    padding-top: 100px;
-    padding-bottom: 110px;
-    text-align: center;
-}
-
-.talk-section p {
-    max-width: 470px;
-    margin: 18px auto 27px;
-    font-size: 14px;
-}
-
-/* FOOTER */
-
-footer {
-    border-top: 1px solid var(--line);
-    padding: 30px 20px;
-    text-align: center;
-}
-
-footer p {
-    color: var(--muted);
-    font-size: 11px;
-    letter-spacing: .4px;
-}
-
-/* MOBILE */
-
-@media (max-width: 600px) {
-    header {
-        padding: 17px 6%;
-    }
-
-    .logo {
-        font-size: 27px;
-    }
-
-    .logo-message {
-        font-size: 9px;
-    }
-
-    nav {
-        gap: 15px;
-    }
-
-    nav a {
-        font-size: 11px;
-    }
-
-    .hero {
-        padding-top: 105px;
-        padding-bottom: 105px;
-    }
-
-    .hero h1 {
-        letter-spacing: -1.8px;
-    }
-
-    .hero .description {
-        font-size: 14px;
-    }
-
-    .hero-buttons {
-        flex-wrap: wrap;
-    }
-
-    .why,
-    .write-section,
-    .read-section,
-    .talk-section {
-        padding-top: 75px;
-        padding-bottom: 75px;
-    }
-
-    article {
-        padding: 21px;
-    }
-
-    textarea {
-        min-height: 180px;
-        padding: 18px;
-    }
-}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Unsaid</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+
+        <div class="logo-area">
+
+            <div class="logo">
+                unsaid.
+            </div>
+
+            <div class="logo-message">
+                leave your heaviest thoughts here
+            </div>
+
+        </div>
+
+        <nav>
+            <a href="#write">Write</a>
+            <a href="#read">Read</a>
+            <a href="#talk">Talk</a>
+        </nav>
+
+    </header>
+
+    <main>
+
+        <!-- HERO -->
+
+        <section class="hero">
+
+            <p class="eyebrow">
+                A quiet place for honest thoughts.
+            </p>
+
+            <h1>
+                Some things are<br>
+                easier to <span>write</span> than to say.
+            </h1>
+
+            <p class="description">
+                A small anonymous space to put into words
+                the things you never found the right moment to say.
+            </p>
+
+            <div class="hero-buttons">
+
+                <button onclick="showWrite()">
+                    Write something
+                </button>
+
+                <button class="secondary" onclick="showRead()">
+                    Read something
+                </button>
+
+            </div>
+
+        </section>
+
+        <!-- WHY UNSAID -->
+
+        <section class="why">
+
+            <p class="section-label">
+                WHY UNSAID?
+            </p>
+
+            <h2>
+                Sometimes you don't need advice.
+                You just need somewhere to put the feeling.
+            </h2>
+
+            <p>
+                Write anonymously. Read someone else's experience.
+                See a perspective different from your own.
+            </p>
+
+        </section>
+
+        <!-- WRITE -->
+
+        <section id="write" class="write-section">
+
+            <h2>
+                What couldn't you say?
+            </h2>
+
+            <textarea
+                id="thought"
+                placeholder="You can write it here..."
+                maxlength="1000"
+                aria-label="Write your thought anonymously"
+                spellcheck="true"
+            ></textarea>
+
+            <p class="writing-note">
+                Please keep your thought under 1,000 characters.
+                Don't include names, addresses, phone numbers, or other
+                details that could identify you or someone else.
+            </p>
+
+            <button onclick="publishThought()">
+                Share anonymously
+            </button>
+
+            <p id="confirmation" role="status" aria-live="polite"></p>
+
+        </section>
+
+        <!-- READ -->
+
+        <section id="read" class="read-section">
+
+            <p class="section-label">
+                SOMEONE ELSE'S WORDS
+            </p>
+
+            <div id="posts">
+            </div>
+
+        </section>
+
+        <!-- TALK -->
+
+        <section id="talk" class="talk-section">
+
+            <h2>
+                Want to talk it through?
+            </h2>
+
+            <p>
+                Sometimes writing is the first step.
+                Later, we'll add a space where you can
+                reflect on what you wrote.
+            </p>
+
+            <button onclick="alert('Coming soon.')">
+                Talk it through
+            </button>
+
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            unsaid. — made for the things we don't say.
+        </p>
+
+    </footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>
